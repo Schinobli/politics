@@ -1,0 +1,38 @@
+{% extends "perfilbase.html" %}
+{% block despesas %}
+<div class="col-md-6">
+    <div class="card mb-4 mb-md-0">
+        <div class="card-body">
+            <p class="mb-4"><span class="text-primary font-italic me-1">Despesas</span> </p>
+
+            <!-- For loop logic of jinja template -->
+            {%for i in range(0, lendes)%}
+            <p class="mb-1" style="font-size: .77rem;">{{despesas[i]["tipoDespesa"]}}</p>
+            <small>Data: {{despesas[i]["dataDocumento"]}}</small>
+            <p>Valor: {{despesas[i]["valorDocumento"]}}</p>
+            <br>
+            {%endfor%}
+            <p class="mb-1" style="font-size: .77rem;">Total: R${{total}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block receitas %}
+<div class="col-md-6">
+    <div class="card mb-4 mb-md-0">
+        <div class="card-body">
+            <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">Profissões</span> </p>
+
+                <!-- For loop logic of jinja template -->
+                {%for i in range(0, lenpro)%}
+                <p class="mb-1" style="font-size: 1rem;">Título: {{profissoes[i]["titulo"]}}</p>
+                <p class="mb-1" style="font-size: .77rem;">Código: {{profissoes[i]["codTipoProfissao"]}}</p>
+                <p class="mb-1" style="font-size: .77rem;">Data e Hora: {{profissoes[i]["dataHora"]}}</p>
+                <br>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
