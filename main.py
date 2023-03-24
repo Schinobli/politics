@@ -1,22 +1,16 @@
 from flask import Flask, render_template, send_from_directory
 from api import Apipol
 
-app = Flask(__name__, static_folder='')
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
-# Rota que serve o arquivo index.html
-
-
-@app.route('/')
-def serve():
-    return send_from_directory(app.static_folder, 'index.html')
+# Rota para servir arquivos estáticos
 
 
-# Rota para servir os arquivos estáticos
-
-
-@app.route('/<path:path>')
+@app.route('/static/<path:path>')
 def serve_static(path):
     return send_from_directory(app.static_folder, path)
+
+# Rota para a página inicial
 
 
 @app.route('/')
