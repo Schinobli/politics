@@ -85,7 +85,7 @@ def search():
     idx = 0
     bef = 0
     aft = 1
-    idx_f = len(deputados) if len(deputados) <= 12 else 12
+    idx_f = len(deputados)
 
     return render_template("homepage.html", idx=idx, idx_f=idx_f, len=len(deputados), bef=bef, aft=aft, deputados=deputados)
 
