@@ -59,7 +59,9 @@ def user(id):
     data_nasc = data["dataNascimento"]
     email = data["ultimoStatus"]["gabinete"]["email"]
     site = data["urlWebsite"]
+    lensi = len(data["urlWebsite"]) if data["urlWebsite"] else 0
     redesocial = data["redeSocial"]
+    lenre = len(data["redeSocial"]) if data["redeSocial"] else 0
 
     despesas = Apipol.buscar_deputados_id_despesas(id)
     total = round(sum(x["valorDocumento"] for x in despesas), 2)
@@ -68,10 +70,11 @@ def user(id):
     return render_template("perfil.html", id=id, situacao=situacao, cpf=cpf,
                            data_nasc=data_nasc, nome=nome, foto=foto,
                            nomecivil=nomecivil, partido=partido,
-                           uf=uf, email=email, sexo=sexo, site=site,
-                           redesocial=redesocial, lendes=len(despesas),
-                           despesas=despesas, total=total,
-                           lenpro=len(profissoes), profissoes=profissoes)
+                           uf=uf, email=email, sexo=sexo, lensi=lensi,
+                           site=site, lenre=lenre, redesocial=redesocial,
+                           lendes=len(despesas), despesas=despesas,
+                           total=total, lenpro=len(profissoes),
+                           profissoes=profissoes)
 
 
 @app.route('/search')

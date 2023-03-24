@@ -4,8 +4,6 @@
     <div class="card mb-4 mb-md-0">
         <div class="card-body">
             <p class="mb-4"><span class="text-primary font-italic me-1">Despesas</span> </p>
-
-            <!-- For loop logic of jinja template -->
             {%for i in range(0, lendes)%}
             <p class="mb-1" style="font-size: .77rem;">{{despesas[i]["tipoDespesa"]}}</p>
             <small>Data: {{despesas[i]["dataDocumento"]}}</small>
@@ -17,22 +15,55 @@
     </div>
 </div>
 {% endblock %}
-{% block receitas %}
+{% block profissoes %}
 <div class="col-md-6">
     <div class="card mb-4 mb-md-0">
         <div class="card-body">
-            <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">Profissões</span> </p>
-
-                <!-- For loop logic of jinja template -->
-                {%for i in range(0, lenpro)%}
-                <p class="mb-1" style="font-size: 1rem;">Título: {{profissoes[i]["titulo"]}}</p>
-                <p class="mb-1" style="font-size: .77rem;">Código: {{profissoes[i]["codTipoProfissao"]}}</p>
-                <p class="mb-1" style="font-size: .77rem;">Data e Hora: {{profissoes[i]["dataHora"]}}</p>
-                <br>
-                {%endfor%}
-            </div>
+            <p class="mb-4"><span class="text-primary font-italic me-1">Profissões</span> </p>
+            {%for i in range(0, lenpro)%}
+            <p class="mb-1" style="font-size: 1rem;">Título: {{profissoes[i]["titulo"]}}</p>
+            <p class="mb-1" style="font-size: .77rem;">Código: {{profissoes[i]["codTipoProfissao"]}}</p>
+            <p class="mb-1" style="font-size: .77rem;">Data e Hora: {{profissoes[i]["dataHora"]}}</p>
+            <br>
+            {%endfor%}
         </div>
     </div>
 </div>
+</div>
+{% endblock %}
+{% block site %}
+{% if lensi == 0 %}
+<ul class="list-group list-group-flush rounded-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+        <p class="mb-0">Site: Nenhum Informado!</p>
+    </li>
+</ul>
+{%endif%}
+{%for i in range(0, lensi)%}
+<ul class="list-group list-group-flush rounded-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+        <a href="{{site[i]}}">
+            <p class="mb-0">{{site[i]}}</p>
+        </a>
+    </li>
+</ul>
+{%endfor%}
+{% endblock %}
+{% block redessociais %}
+{% if lenre == 0 %}
+<ul class="list-group list-group-flush rounded-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+        <p class="mb-0">Redes Sociais: Nenhuma Informada!</p>
+    </li>
+</ul>
+{%endif%}
+{%for i in range(0, lenre)%}
+<ul class="list-group list-group-flush rounded-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+        <a href="{{redesocial[i]}}">
+            <p class="mb-0">{{redesocial[i]}}</p>
+        </a>
+    </li>
+</ul>
+{%endfor%}
 {% endblock %}
