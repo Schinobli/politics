@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from api import Apipol
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='')
 
 # route -> caminho
 # função -> o que quer exibir na página
