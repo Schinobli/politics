@@ -12,19 +12,24 @@ class Apipol:
         request = requests.get(
             f"https://dadosabertos.camara.leg.br/api/v2/deputados/{id}")
         todo = json.loads(request.content)
-        return (todo['dados'])
+        return (todo["dados"] if "dados" in todo else None)
 
     def buscar_deputados_id_profissoes(id):
         request = requests.get(
             f"https://dadosabertos.camara.leg.br/api/v2/deputados/{id}/profissoes")
         todo = json.loads(request.content)
-        return (todo['dados'])
+        return (todo["dados"] if "dados" in todo else None)
 
-    def buscar_deputados():
-        request = requests.get(
-            f"https://dadosabertos.camara.leg.br/api/v2/deputados")
+    def buscar_deputados(args):
+        if args:
+            filtro = filtros(args)
+            request = requests.get(
+                f"https://dadosabertos.camara.leg.br/api/v2/deputados/?{filtro}")
+        else:
+            request = requests.get(
+                f"https://dadosabertos.camara.leg.br/api/v2/deputados")
         todo = json.loads(request.content)
-        return (todo['dados'])
+        return (todo["dados"] if "dados" in todo else None)
 
     def buscar_deputados_id_despesas(id, filtro=False):
         if filtro:
@@ -36,4 +41,4 @@ class Apipol:
                 f"https://dadosabertos.camara.leg.br/api/v2/deputados/{id}/despesas")
 
         todo = json.loads(request.content)
-        return (todo['dados'])
+        return (todo["dados"] if "dados" in todo else None)

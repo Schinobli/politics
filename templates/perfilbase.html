@@ -11,8 +11,32 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body background="img/background.png">
-    <section style="background-color: #eee;">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Homepage <span class="sr-only">(página atual)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="GET" action="/search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar"
+                    name="search_term">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="search_by" id="search_by_name" value="nome" {% if
+                        search_by=='nome' or not search_by %}checked{% endif %}>
+                    <label class="form-check-label" for="radio_nome">Nome</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="search_by" id="search_by_party"
+                        value="siglaPartido" {% if search_by=='partido' %}checked{% endif %}>
+                    <label class="form-check-label" for="radio_partido">Partido</label>
+                </div>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+    <section style="background-color: #eee; background-image: url('../static/img/background.png'); background-size: auto; background-position: top left; background-repeat: no-repeat;">
         <div class="container py-5">
             <div class="row">
                 <div class="col">
